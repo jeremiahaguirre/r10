@@ -1,11 +1,27 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { View, ScrollView, Image } from "react-native";
 import styles from "./styles";
+import Conduct from "../../components/Conduct";
 
-const About = () => {
+const About = ({ conductData }) => {
+  console.log(conductData);
   return (
     <View style={styles.container}>
-      <Text style={styles.welcome}>This is the about screen...</Text>
+      <ScrollView>
+        <Image
+          style={styles.image}
+          source={require("../../assets/images/r10_logo.png")}
+        />
+        <View
+          style={{
+            borderBottomColor: "black",
+            borderBottomWidth: 1
+          }}
+        />
+        {conductData.allConducts.map(data => (
+          <Conduct key={data.id} list={data} />
+        ))}
+      </ScrollView>
     </View>
   );
 };

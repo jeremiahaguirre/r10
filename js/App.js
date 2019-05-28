@@ -8,9 +8,16 @@
 
 import React, { Component } from "react";
 import About from "./screens/About";
+import { ApolloProvider } from "react-apollo";
+
+import client from "./config/api";
 
 export default class App extends Component {
   render() {
-    return <About />;
+    return (
+      <ApolloProvider client={client}>
+        <About />
+      </ApolloProvider>
+    );
   }
 }
