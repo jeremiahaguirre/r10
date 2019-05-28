@@ -1,10 +1,9 @@
 import React from "react";
-import { View, ScrollView, Image } from "react-native";
+import { View, ScrollView, Image, Text } from "react-native";
 import styles from "./styles";
 import Conduct from "../../components/Conduct";
 
 const About = ({ conductData }) => {
-  console.log(conductData);
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -12,12 +11,17 @@ const About = ({ conductData }) => {
           style={styles.image}
           source={require("../../assets/images/r10_logo.png")}
         />
-        <View
-          style={{
-            borderBottomColor: "black",
-            borderBottomWidth: 1
-          }}
-        />
+        <View style={styles.line} />
+        <Text style={styles.p}>
+          R10 is a conference that focuses on just about any topic related to
+          dev.
+        </Text>
+        <Text style={styles.h2}>Date &amp; Venue</Text>
+        <Text style={styles.p}>
+          The R10 conference will take place on Thursday, June 27, 2017 in
+          Vancouver, BC.
+        </Text>
+        <Text style={styles.h2}>Code of Conduct</Text>
         {conductData.allConducts.map(data => (
           <Conduct key={data.id} list={data} />
         ))}
