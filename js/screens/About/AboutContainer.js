@@ -4,9 +4,11 @@ import { Text } from "react-native";
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import Loader from "../../components/Loader";
-import styles from "./styles";
 
 class AboutContainer extends Component {
+  static navigationOptions = {
+    title: "About"
+  };
   render() {
     return (
       <Query query={GET_CONDUCT_ITEMS}>

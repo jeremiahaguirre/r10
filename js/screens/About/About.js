@@ -11,7 +11,7 @@ const About = ({ conductData }) => {
           style={styles.image}
           source={require("../../assets/images/r10_logo.png")}
         />
-        <View style={styles.line} />
+        
         <Text style={styles.p}>
           R10 is a conference that focuses on just about any topic related to
           dev.

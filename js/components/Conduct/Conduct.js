@@ -3,7 +3,6 @@ import { View, Text } from "react-native";
 import styles from "./styles";
 
 const Conduct = ({ list }) => {
-  console.log("this one", list);
   return (
     <View>
       <Text style={styles.title}>{list.title}</Text>
