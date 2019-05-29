@@ -20,7 +20,7 @@ class SessionContainer extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.location}>{sessionLocation}</Text>
-        <Text style={styles.title}> {sessionTitle}</Text>
+        <Text style={styles.title}>{sessionTitle}</Text>
         <Text style={styles.time}>{moment(sessionTime).format(" h:mm a")}</Text>
         <Text style={styles.description}>{sessionDescription}</Text>
         {speaker !== null ? (
