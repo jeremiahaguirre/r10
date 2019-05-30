@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -16,7 +16,10 @@ const styles = StyleSheet.create({
     paddingLeft: 0,
     marginTop: 10,
     marginBottom: 10,
-    fontFamily: "Montserrat"
+    ...Platform.select({
+      android: { fontFamily: "Montserrat-Regular" },
+      ios: { fontFamily: "Montserrat" }
+    })
   },
   time: {
     color: "#cf392a",
@@ -24,13 +27,44 @@ const styles = StyleSheet.create({
   },
   description: {
     lineHeight: 25,
-    fontFamily: "Montserrat",
+    ...Platform.select({
+      android: { fontFamily: "Montserrat-Regular" },
+      ios: { fontFamily: "Montserrat" }
+    }),
     marginBottom: 40
   },
   image: {
     width: 60,
     height: 60,
     borderRadius: 30
+  },
+  btnText: {
+    ...Platform.select({
+      android: { fontFamily: "Montserrat-Regular" },
+      ios: { fontFamily: "Montserrat" }
+    }),
+    color: "#fff",
+    width: "100%",
+    fontSize: 20,
+    alignContent: "center",
+    textAlign: "center"
+  },
+  btn: {
+    alignContent: "center",
+    justifyContent: "center",
+    position: "absolute",
+    left: "4.7%",
+    width: "90%",
+    height: 50,
+    margin: "auto",
+    borderRadius: 300,
+    backgroundColor: "transparent"
+  },
+  icon: {
+    position: "absolute",
+    left: 250,
+    top: 10,
+    color: "red"
   }
 });
 

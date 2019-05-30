@@ -5,7 +5,6 @@ import styles from "./styles";
 import { formatSessionData } from "../../helpers";
 
 const Schedule = ({ sessionData, navigation }) => {
-  console.log(navigation);
   return (
     <View style={styles.container}>
       <SectionList
@@ -23,7 +22,8 @@ const Schedule = ({ sessionData, navigation }) => {
                 sessionTitle: item.title,
                 sessionDescription: item.description,
                 sessionTime: item.startTime,
-                speaker:item.speaker
+                speaker: item.speaker,
+                sessionId: item.id
               })
             }
           >

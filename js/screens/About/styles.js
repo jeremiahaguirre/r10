@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -27,9 +27,18 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   h2: {
+    ...Platform.select({
+      android: { fontFamily: "Montserrat-Regular" },
+      ios: { fontFamily: "Montserrat" }
+    }),
+
     fontSize: 20
   },
   p: {
+    ...Platform.select({
+      android: { fontFamily: "Montserrat-Regular" },
+      ios: { fontFamily: "Montserrat" }
+    }),
     paddingTop: 20,
     paddingBottom: 20
   }

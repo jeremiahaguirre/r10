@@ -3,6 +3,8 @@ import { View, Text, Image } from "react-native";
 import Session from "./Session";
 import moment from "moment";
 import styles from "./styles";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import FavesContext from "../../context/FavesContext";
 
 class SessionContainer extends Component {
   static navigationOptions = {
@@ -16,21 +18,40 @@ class SessionContainer extends Component {
     const sessionTime = navigation.getParam("sessionTime");
     const sessionLocation = navigation.getParam("sessionLocation");
     const speaker = navigation.getParam("speaker");
-    console.log(speaker);
+    const sessionId = navigation.getParam("sessionId");
+    let IconComponent = Ionicons;
+    let iconName;
+    iconName = `ios-heart`;
     return (
       <View style={styles.container}>
-        <Text style={styles.location}>{sessionLocation}</Text>
-        <Text style={styles.title}>{sessionTitle}</Text>
-        <Text style={styles.time}>{moment(sessionTime).format(" h:mm a")}</Text>
-        <Text style={styles.description}>{sessionDescription}</Text>
-        {speaker !== null ? (
-          <View>
-            <Text>Presented by:</Text>
-            <Image style={styles.image} source={{ uri: speaker.image }} />
-            <Text>{speaker.name}</Text>
-          </View>
-        ) : null}
-        <Session />
+        <FavesContext.Consumer>
+          {value => (
+            <View>
+              {value.favIds.includes(sessionId) ? (
+                <IconComponent name={iconName} style={styles.icon} size={25} />
+              ) : null}
+              <Text style={styles.location}>{sessionLocation}</Text>
+              <Text style={styles.title}>{sessionTitle}</Text>
+              <Text style={styles.time}>
+                {moment(sessionTime).format(" h:mm a")}
+              </Text>
+              <Text style={styles.description}>{sessionDescription}</Text>
+              {speaker !== null ? (
+                <View>
+                  <Text>Presented by:</Text>
+                  <Image style={styles.image} source={{ uri: speaker.image }} />
+                  <Text>{speaker.name}</Text>
+                  <Session
+                    id={sessionId}
+                    addIcon={value.addFaveSession}
+                    removeIcon={value.removeFaveSession}
+                    favId={value.favIds}
+                  />
+                </View>
+              ) : null}
+            </View>
+          )}
+        </FavesContext.Consumer>
       </View>
     );
   }
