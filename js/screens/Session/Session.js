@@ -25,12 +25,14 @@ const Session = ({ query, data }) => {
       {query.Session.speaker !== null ? (
         <View>
           <Text>Presented by:</Text>
-          <Image
-            onPress={() => console.log("I am pressed")}
-            style={styles.image}
-            source={{ uri: query.Session.speaker.image }}
-          />
-          <Text>{query.Session.speaker.name}</Text>
+          <View style={styles.artist}>
+            <Image
+              onPress={() => console.log("I am pressed")}
+              style={styles.image}
+              source={{ uri: query.Session.speaker.image }}
+            />
+            <Text style={styles.artistText}>{query.Session.speaker.name}</Text>
+          </View>
           <LinearGradient
             colors={["#cf392a", "#9963ea"]}
             start={{ x: 0.0, y: 1.0 }}
@@ -42,8 +44,8 @@ const Session = ({ query, data }) => {
             ]}
           >
             <TouchableOpacity
+              style={styles.btn}
               onPress={() => {
-                console.log("hello");
                 data.favIds.includes(query.Session.id)
                   ? data.removeFaveSession(query.Session.id)
                   : data.addFaveSession(query.Session.id);

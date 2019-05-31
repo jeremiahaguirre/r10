@@ -28,6 +28,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: "100%",
     color: "grey"
+  },
+  icon: {
+    position: "relative",
+    fontSize: 14,
+    left: 280,
+    top: 100,
+    zIndex: 100,
+    color: "red"
   }
 });
 

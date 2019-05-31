@@ -1,11 +1,19 @@
 import React from "react";
-import { View, Text, TouchableHighlight } from "react-native";
+import { View, Text } from "react-native";
 import moment from "moment";
 import styles from "./styles";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
-const SessionData = ({ list }) => {
+let IconComponent = Ionicons;
+let iconName;
+iconName = `ios-heart`;
+
+const SessionData = ({ data, list }) => {
   return (
     <View>
+      {data.favIds.includes(list.id) ? (
+        <IconComponent name={iconName} style={styles.icon} size={25} />
+      ) : null}
       <Text style={styles.time}>
         {moment(list.startTime).format(" h:mm a")}
       </Text>

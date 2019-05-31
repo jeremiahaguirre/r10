@@ -56,7 +56,6 @@ class Conduct extends Component {
     const animatedStyles = {
       transform: [{ rotate: animator }]
     };
-    console.log(spinValue);
     return (
       <View>
         <TouchableOpacity onPress={() => this.onClick()}>

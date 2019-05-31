@@ -4,7 +4,7 @@ import SessionData from "../../components/SessionData";
 import styles from "./styles";
 import { formatSessionData } from "../../helpers";
 
-const Schedule = ({ sessionData, navigation }) => {
+const Schedule = ({ sessionData, navigation, data }) => {
   return (
     <View style={styles.container}>
       <SectionList
@@ -27,7 +27,7 @@ const Schedule = ({ sessionData, navigation }) => {
               })
             }
           >
-            <SessionData list={item} />
+            <SessionData data={data} list={item} />
           </TouchableHighlight>
         )}
         sections={formatSessionData(sessionData.allSessions)}

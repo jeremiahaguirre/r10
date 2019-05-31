@@ -8,7 +8,7 @@ const Loader = () => {
       style={styles.loader}
       animating={true}
       size="small"
-      color="black"
+      color="red"
     />
   );
 };

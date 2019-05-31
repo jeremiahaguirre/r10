@@ -43,6 +43,8 @@ const styles = StyleSheet.create({
       android: { fontFamily: "Montserrat-Regular" },
       ios: { fontFamily: "Montserrat" }
     }),
+    position: "absolute",
+    bottom: 113,
     color: "#fff",
     width: "100%",
     fontSize: 20,
@@ -53,6 +55,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     justifyContent: "center",
     position: "absolute",
+    top: 100,
     left: "4.7%",
     width: "90%",
     height: 50,
@@ -65,6 +68,19 @@ const styles = StyleSheet.create({
     left: 250,
     top: 10,
     color: "red"
+  },
+  artist: {
+    paddingTop: 10,
+    alignContent: "center",
+    flexDirection: "row"
+  },
+  artistText: {
+    paddingLeft: 20,
+    paddingTop: 15,
+    fontSize: 17,
+    flexDirection: "column",
+    alignContent: "center",
+    justifyContent: "center"
   }
 });
 
