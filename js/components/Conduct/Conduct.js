@@ -4,7 +4,8 @@ import {
   UIManager,
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  LayoutAnimation
 } from "react-native";
 import styles from "./styles";
 
@@ -21,19 +22,28 @@ class Conduct extends Component {
   }
 
   onClick() {
+    const animationConfig = {
+      duration: 300,
+      update: {
+        type: "linear",
+        property: "opacity"
+      }
+    };
+    LayoutAnimation.configureNext(animationConfig);
     this.setState({ isOpen: !this.state.isOpen });
   }
 
   render() {
     const { list } = this.props;
+    const { isOpen } = this.state;
 
     return (
       <View>
         <TouchableOpacity onPress={() => this.onClick()}>
           <Text style={styles.title}>
-            {this.state.isOpen ? "-" : "+"} {list.title}
+            {isOpen ? "-" : "+"} {list.title}
           </Text>
-          {this.state.isOpen && <Text>{list.description}</Text>}
+          {isOpen && <Text>{list.description}</Text>}
         </TouchableOpacity>
       </View>
     );
