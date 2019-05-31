@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { View, Text, Image } from "react-native";
+import { View } from "react-native";
 import Session from "./Session";
-import moment from "moment";
+import Loader from "../../components/Loader";
 import styles from "./styles";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import FavesContext from "../../context/FavesContext";
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
 
 class SessionContainer extends Component {
   static navigationOptions = {
@@ -13,48 +14,41 @@ class SessionContainer extends Component {
 
   render() {
     const { navigation } = this.props;
-    const sessionTitle = navigation.getParam("sessionTitle");
-    const sessionDescription = navigation.getParam("sessionDescription");
-    const sessionTime = navigation.getParam("sessionTime");
-    const sessionLocation = navigation.getParam("sessionLocation");
-    const speaker = navigation.getParam("speaker");
+
     const sessionId = navigation.getParam("sessionId");
-    let IconComponent = Ionicons;
-    let iconName;
-    iconName = `ios-heart`;
+
     return (
       <View style={styles.container}>
-        <FavesContext.Consumer>
-          {value => (
-            <View>
-              {value.favIds.includes(sessionId) ? (
-                <IconComponent name={iconName} style={styles.icon} size={25} />
-              ) : null}
-              <Text style={styles.location}>{sessionLocation}</Text>
-              <Text style={styles.title}>{sessionTitle}</Text>
-              <Text style={styles.time}>
-                {moment(sessionTime).format(" h:mm a")}
-              </Text>
-              <Text style={styles.description}>{sessionDescription}</Text>
-              {speaker !== null ? (
-                <View>
-                  <Text>Presented by:</Text>
-                  <Image style={styles.image} source={{ uri: speaker.image }} />
-                  <Text>{speaker.name}</Text>
-                  <Session
-                    id={sessionId}
-                    addIcon={value.addFaveSession}
-                    removeIcon={value.removeFaveSession}
-                    favId={value.favIds}
-                  />
-                </View>
-              ) : null}
-            </View>
-          )}
-        </FavesContext.Consumer>
+        <Query query={GET_SESSION} variables={{ id: sessionId }}>
+          {({ loading, error, data }) => {
+            if (loading || !data) return <Loader />;
+            return (
+              <FavesContext.Consumer>
+                {value => <Session query={data} data={value} />}
+              </FavesContext.Consumer>
+            );
+          }}
+        </Query>
       </View>
     );
   }
 }
 
 export default SessionContainer;
+
+const GET_SESSION = gql`
+  query($id: ID!) {
+    Session(id: $id) {
+      id
+      title
+      location
+      startTime
+      speaker {
+        image
+        name
+        bio
+      }
+      description
+    }
+  }
+`;
