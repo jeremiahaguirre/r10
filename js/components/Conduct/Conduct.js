@@ -5,7 +5,8 @@ import {
   View,
   Text,
   TouchableOpacity,
-  LayoutAnimation
+  LayoutAnimation,
+  Animated
 } from "react-native";
 import styles from "./styles";
 
@@ -17,7 +18,8 @@ class Conduct extends Component {
         UIManager.setLayoutAnimationEnabledExperimental(true);
     }
     this.state = {
-      isOpen: false
+      isOpen: false,
+      spinValue: new Animated.Value(0)
     };
   }
 
@@ -30,19 +32,40 @@ class Conduct extends Component {
       }
     };
     LayoutAnimation.configureNext(animationConfig);
+    Animated.timing(this.state.spinValue, {
+      toValue: 1,
+      duration: 500
+    }).start(animation => {
+      if (animation.finished) {
+        this.setState({ spinValue: new Animated.Value(0) });
+      }
+    });
+
     this.setState({ isOpen: !this.state.isOpen });
   }
 
   render() {
     const { list } = this.props;
-    const { isOpen } = this.state;
+    const { isOpen, spinValue } = this.state;
 
+    const animator = spinValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: ["0deg", "360deg"]
+    });
+
+    const animatedStyles = {
+      transform: [{ rotate: animator }]
+    };
+    console.log(spinValue);
     return (
       <View>
         <TouchableOpacity onPress={() => this.onClick()}>
-          <Text style={styles.title}>
-            {isOpen ? "-" : "+"} {list.title}
-          </Text>
+          <View style={[styles.title]}>
+            <Animated.Text style={[styles.text, animatedStyles]}>
+              {isOpen ? "-" : "+"}
+            </Animated.Text>
+            <Text style={styles.text}> {list.title}</Text>
+          </View>
           {isOpen && <Text>{list.description}</Text>}
         </TouchableOpacity>
       </View>
