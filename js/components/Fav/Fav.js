@@ -8,17 +8,19 @@ let IconComponent = Ionicons;
 let iconName;
 iconName = `ios-heart`;
 
-const Fav = ({ sessionData, consumerData }) => {
-  const favId = sessionData.allSessions.filter(session =>
-    consumerData.favIds.includes(session.id)
-  );
-  const newId = favId.forEach(Id => Id);
-  const location = favId.map(data => data.location);
-  console.log(newId);
+const Fav = ({ item, consumerData }) => {
   return (
     <View>
-      <Text style={styles.span1}>{location}</Text>
-      <Text style={styles.span2}>hello</Text>
+      <View>
+        {consumerData.favIds.includes(item.id) ? (
+          <IconComponent name={iconName} style={styles.icon} size={25} />
+        ) : null}
+        <Text style={styles.time}>
+          {moment(item.startTime).format(" h:mm a")}
+        </Text>
+        <Text style={styles.span1}>{item.title}</Text>
+        <Text style={styles.span2}>{item.location}</Text>
+      </View>
     </View>
   );
 };
