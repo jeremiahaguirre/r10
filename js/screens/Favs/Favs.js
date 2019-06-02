@@ -5,6 +5,10 @@ import { formatSessionData } from "../../helpers";
 import styles from "./styles";
 
 const Favs = ({ sessionData, navigation, consumerData }) => {
+  const favId = sessionData.allSessions.filter(session =>
+    consumerData.favIds.includes(session.id)
+  );
+
   return (
     <View style={styles.container}>
       <SectionList
@@ -30,7 +34,7 @@ const Favs = ({ sessionData, navigation, consumerData }) => {
             <Fav sessionData={sessionData} consumerData={consumerData} />
           </TouchableHighlight>
         )}
-        sections={formatSessionData(sessionData.allSessions)}
+        sections={formatSessionData(favId)}
         keyExtractor={(item, index) => item + index}
       />
     </View>

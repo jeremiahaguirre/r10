@@ -9,12 +9,16 @@ let iconName;
 iconName = `ios-heart`;
 
 const Fav = ({ sessionData, consumerData }) => {
-  const favId = consumerData.favIds.map(data => data.id);
-  console.log(favId);
+  const favId = sessionData.allSessions.filter(session =>
+    consumerData.favIds.includes(session.id)
+  );
+  const newId = favId.forEach(Id => Id);
+  const location = favId.map(data => data.location);
+  console.log(newId);
   return (
     <View>
-      <Text style={styles.span1}>{sessionData.title}</Text>
-      <Text style={styles.span2}>{sessionData.location}</Text>
+      <Text style={styles.span1}>{location}</Text>
+      <Text style={styles.span2}>hello</Text>
     </View>
   );
 };

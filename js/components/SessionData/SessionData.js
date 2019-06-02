@@ -3,7 +3,6 @@ import { View, Text } from "react-native";
 import moment from "moment";
 import styles from "./styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
 let IconComponent = Ionicons;
 let iconName;
 iconName = `ios-heart`;

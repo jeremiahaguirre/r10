@@ -7,7 +7,7 @@ import Loader from "../../components/Loader";
 
 class FavsContainer extends Component {
   static navigationOptions = {
-    title: "Schedule"
+    title: "Favs"
   };
   render() {
     return (
