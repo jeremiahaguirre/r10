@@ -11,9 +11,11 @@ class SpeakerContainer extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.aboutSpeaker}>About the speaker</Text>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={styles.goback}>X</Text>
+          <Text style={styles.goback}>
+            X{" "}
+            <Text style={styles.aboutSpeaker}> {"     "}About the speaker</Text>
+          </Text>
         </TouchableOpacity>
         <Speaker speaker={speaker} />
       </View>
