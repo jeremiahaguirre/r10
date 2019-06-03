@@ -24,7 +24,13 @@ class SessionContainer extends Component {
             if (loading || !data) return <Loader />;
             return (
               <FavesContext.Consumer>
-                {value => <Session query={data} data={value} />}
+                {value => (
+                  <Session
+                    navigation={this.props.navigation}
+                    query={data}
+                    data={value}
+                  />
+                )}
               </FavesContext.Consumer>
             );
           }}
@@ -47,6 +53,7 @@ const GET_SESSION = gql`
         image
         name
         bio
+        url
       }
       description
     }

@@ -9,7 +9,8 @@ let IconComponent = Ionicons;
 let iconName;
 iconName = `ios-heart`;
 
-const Session = ({ query, data }) => {
+const Session = ({ query, data, navigation }) => {
+  console.log(query);
   return (
     <View>
       {data.favIds.includes(query.Session.id) ? (
@@ -24,40 +25,50 @@ const Session = ({ query, data }) => {
 
       {query.Session.speaker !== null ? (
         <View>
-          <Text>Presented by:</Text>
-          <View style={styles.artist}>
-            <Image
-              onPress={() => console.log("I am pressed")}
-              style={styles.image}
-              source={{ uri: query.Session.speaker.image }}
-            />
-            <Text style={styles.artistText}>{query.Session.speaker.name}</Text>
-          </View>
-          <LinearGradient
-            colors={["#cf392a", "#9963ea"]}
-            start={{ x: 0.0, y: 1.0 }}
-            end={{ x: 1.0, y: 0.0 }}
-            style={[
-              StyleSheet.absoluteFill,
-              { height: 64, width: "100%" },
-              styles.btn
-            ]}
+          <TouchableOpacity
+            underlayColor={"grey"}
+            onPress={() =>
+              navigation.navigate("Speaker", {
+                speaker: query.Session.speaker
+              })
+            }
           >
-            <TouchableOpacity
-              style={styles.btn}
-              onPress={() => {
-                data.favIds.includes(query.Session.id)
-                  ? data.removeFaveSession(query.Session.id)
-                  : data.addFaveSession(query.Session.id);
-              }}
+            <Text>Presented by:</Text>
+            <View style={styles.artist}>
+              <Image
+                style={styles.image}
+                source={{ uri: query.Session.speaker.image }}
+              />
+              <Text style={styles.artistText}>
+                {query.Session.speaker.name}
+              </Text>
+            </View>
+            <LinearGradient
+              colors={["#cf392a", "#9963ea"]}
+              start={{ x: 0.0, y: 1.0 }}
+              end={{ x: 1.0, y: 0.0 }}
+              style={[
+                StyleSheet.absoluteFill,
+                { height: 64, width: "100%" },
+                styles.btn
+              ]}
             >
-              {data.favIds.includes(query.Session.id) ? (
-                <Text style={styles.btnText}>Remove from Faves</Text>
-              ) : (
-                <Text style={styles.btnText}>Add to Faves</Text>
-              )}
-            </TouchableOpacity>
-          </LinearGradient>
+              <TouchableOpacity
+                style={styles.btn}
+                onPress={() => {
+                  data.favIds.includes(query.Session.id)
+                    ? data.removeFaveSession(query.Session.id)
+                    : data.addFaveSession(query.Session.id);
+                }}
+              >
+                {data.favIds.includes(query.Session.id) ? (
+                  <Text style={styles.btnText}>Remove from Faves</Text>
+                ) : (
+                  <Text style={styles.btnText}>Add to Faves</Text>
+                )}
+              </TouchableOpacity>
+            </LinearGradient>
+          </TouchableOpacity>
         </View>
       ) : null}
     </View>

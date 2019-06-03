@@ -1,46 +1,23 @@
-//import liraries
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Query } from "react-apollo";
-import gql from "graphql-tag";
-import Loader from "../../components/Loader";
+import { View, Text, TouchableOpacity } from "react-native";
 import Speaker from "./Speaker";
+import styles from "./styles";
 
-// create a component
 class SpeakerContainer extends Component {
   render() {
-    const sessionId = navigation.getParam("sessionId");
+    const { navigation } = this.props;
+    const speaker = navigation.getParam("speaker");
+    console.log("This is the speaker", speaker);
+
     return (
-      <Query query={GET_SPEAKER} variables={{ id: sessionId }}>
-        {({ loading, error, data }) => {
-          if (loading || !data) return <Loader />;
-          return (
-            <FavesContext.Consumer>
-              {value => (
-                <Speaker
-                  sessionData={data}
-                  data={value}
-                  navigation={this.props.navigation}
-                />
-              )}
-            </FavesContext.Consumer>
-          );
-        }}
-      </Query>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <Text style={styles.goback}>X</Text>
+        </TouchableOpacity>
+        <Speaker speaker={speaker} />
+      </View>
     );
   }
 }
 
 export default SpeakerContainer;
-
-const GET_SPEAKER = gql`
-  query Speaker($id: ID!) {
-    Speaker(id: $id) {
-      id
-      bio
-      name
-      image
-      url
-    }
-  }
-`;

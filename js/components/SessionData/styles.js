@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
   icon: {
     position: "relative",
     fontSize: 14,
-    left: 280,
-    top: 100,
+    left: 285,
+    top: 55,
     zIndex: 100,
     color: "red"
   }

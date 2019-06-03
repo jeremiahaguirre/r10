@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
   },
   icon: {
     position: "absolute",
-    left: 250,
-    top: 10,
+    left: 260,
+    top: 5,
     color: "red"
   },
   artist: {
