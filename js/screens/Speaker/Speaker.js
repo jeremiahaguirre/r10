@@ -1,9 +1,13 @@
-//import liraries
 import React, { Component } from "react";
-import { View, Text, Image, ScrollView } from "react-native";
+import {
+  Text,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Linking
+} from "react-native";
 import styles from "./styles";
 
-// create a component
 class Speaker extends Component {
   constructor(props) {
     super(props);
@@ -19,6 +23,21 @@ class Speaker extends Component {
         <Image style={styles.image} source={{ uri: speaker.image }} />
         <Text style={styles.name}>{speaker.name}</Text>
         <Text>{speaker.bio}</Text>
+        <TouchableOpacity
+          style={{
+            backgroundColor: "#9963ea",
+            borderRadius: 20,
+            padding: 10,
+            marginTop: 20
+          }}
+          onPress={() => {
+            Linking.openURL(speaker.url);
+          }}
+        >
+          <Text style={{ color: "#FFF", fontSize: 20, textAlign: "center" }}>
+            Read more on Wikipedia
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     );
   }
