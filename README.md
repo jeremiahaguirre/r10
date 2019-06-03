@@ -2,8 +2,8 @@
 
 ### ScreenShot
 
-![alt text](screenshots/screenshot1.png)![alt text](screenshots/screenshot2.png)
-
+<img alt="Screenhot1" src="screenshots/screenshot1.png" height=300 /> 
+<img alt="Screenshot2" src="screenshots/screenshot2.png" height=300 /> 
 ---
 
 ## Description

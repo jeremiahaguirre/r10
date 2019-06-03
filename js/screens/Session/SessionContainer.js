@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import { View } from "react-native";
 import Session from "./Session";
 import Loader from "../../components/Loader";
@@ -39,6 +40,10 @@ class SessionContainer extends Component {
     );
   }
 }
+
+SessionContainer.propTypes = {
+  navigation: PropTypes.object.isRequired
+};
 
 export default SessionContainer;
 
