@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import moment from "moment";
 import styles from "./styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import PropTypes from "prop-types";
 
 let IconComponent = Ionicons;
 let iconName;
@@ -23,6 +24,11 @@ const Fav = ({ item, consumerData }) => {
       </View>
     </View>
   );
+};
+
+Fav.propTypes = {
+  item: PropTypes.object,
+  consumerData: PropTypes.object
 };
 
 export default Fav;

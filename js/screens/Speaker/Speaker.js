@@ -7,6 +7,7 @@ import {
   Linking
 } from "react-native";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 class Speaker extends Component {
   constructor(props) {
@@ -42,5 +43,9 @@ class Speaker extends Component {
     );
   }
 }
+
+Speaker.propType = {
+  speaker: PropTypes.object
+};
 
 export default Speaker;

@@ -3,6 +3,7 @@ import { View, SectionList, TouchableHighlight } from "react-native";
 import SessionData from "../../components/SessionData";
 import styles from "./styles";
 import { formatSessionData } from "../../helpers";
+import PropTypes from "prop-types";
 
 const Schedule = ({ sessionData, navigation, data }) => {
   return (
@@ -35,6 +36,12 @@ const Schedule = ({ sessionData, navigation, data }) => {
       />
     </View>
   );
+};
+
+Schedule.propTypes = {
+  sessionData: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
+  data: PropTypes.object
 };
 
 export default Schedule;

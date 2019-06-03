@@ -3,6 +3,7 @@ import { View, TouchableOpacity, StyleSheet, Text, Image } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import styles from "./styles";
 import moment from "moment";
+import PropTypes from "prop-types";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 let IconComponent = Ionicons;
@@ -73,6 +74,12 @@ const Session = ({ query, data, navigation }) => {
       ) : null}
     </View>
   );
+};
+
+Session.propType = {
+  query: PropTypes.object,
+  data: PropTypes.object,
+  navigation: PropTypes.object.isRequired
 };
 
 export default Session;

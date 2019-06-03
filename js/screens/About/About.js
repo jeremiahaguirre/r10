@@ -2,6 +2,7 @@ import React from "react";
 import { View, ScrollView, Image, Text } from "react-native";
 import styles from "./styles";
 import Conduct from "../../components/Conduct";
+import PropTypes from "prop-types";
 
 const About = ({ conductData }) => {
   return (
@@ -11,7 +12,7 @@ const About = ({ conductData }) => {
           style={styles.image}
           source={require("../../assets/images/r10_logo.png")}
         />
-        
+
         <Text style={styles.p}>
           R10 is a conference that focuses on just about any topic related to
           dev.
@@ -28,6 +29,10 @@ const About = ({ conductData }) => {
       </ScrollView>
     </View>
   );
+};
+
+About.propTypes = {
+  conductData: PropTypes.object.isRequired
 };
 
 export default About;

@@ -3,6 +3,7 @@ import { View, TouchableHighlight, SectionList } from "react-native";
 import Fav from "../../components/Fav";
 import { formatSessionData } from "../../helpers";
 import styles from "./styles";
+import PropTypes from "prop-types";
 
 const Favs = ({ sessionData, navigation, consumerData }) => {
   const filteredData = sessionData.allSessions.filter(session =>
@@ -39,6 +40,12 @@ const Favs = ({ sessionData, navigation, consumerData }) => {
       />
     </View>
   );
+};
+
+Favs.propTypes = {
+  sessionData: PropTypes.object,
+  navigation: PropTypes.object.isRequired,
+  consumerData: PropTypes.object
 };
 
 export default Favs;
