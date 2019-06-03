@@ -13,10 +13,12 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingLeft: 10,
     paddingRight: 10,
-    backgroundColor: "#FFF",
+    backgroundColor: "#000",
     height: 20
   },
   speakerModal: {
+    padding: 8,
+    backgroundColor: "#FFF",
     height: "90%",
     marginLeft: 20,
     marginRight: 0,
@@ -34,8 +36,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#000"
   },
   goback: {
+    fontSize: 20,
     paddingTop: 20,
-    paddingLeft: 20
+    paddingLeft: 20,
+    color: "#FFF"
+  },
+  aboutSpeaker: {
+    color: "#FFF",
+    textAlign: "center",
+    paddingTop: 10,
+    fontSize: 20
   }
 });
 
