@@ -12,15 +12,16 @@ iconName = `ios-heart`;
 const Fav = ({ item, consumerData }) => {
   return (
     <View>
-      <View>
+      <Text style={styles.time}>
+        {moment(item.startTime).format(" h:mm a")}
+      </Text>
+
+      <Text style={styles.span1}>{item.title}</Text>
+      <View style={styles.locationView}>
+        <Text style={styles.span2}>{item.location}</Text>
         {consumerData.favIds.includes(item.id) ? (
           <IconComponent name={iconName} style={styles.icon} size={25} />
         ) : null}
-        <Text style={styles.time}>
-          {moment(item.startTime).format(" h:mm a")}
-        </Text>
-        <Text style={styles.span1}>{item.title}</Text>
-        <Text style={styles.span2}>{item.location}</Text>
       </View>
     </View>
   );

@@ -3,14 +3,12 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingTop: 5,
     backgroundColor: "#FFF"
   },
   line: {
-    marginTop: 20,
-    marginBottom: 20,
+    marginTop: 10,
+    marginBottom: 10,
     borderBottomColor: "grey",
     borderBottomWidth: 1
   }

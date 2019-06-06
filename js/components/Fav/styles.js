@@ -12,30 +12,35 @@ const styles = StyleSheet.create({
     })
   },
   span1: {
-    marginTop: 20,
+    marginTop: 10,
     width: "100%",
     ...Platform.select({
       android: { fontFamily: "Montserrat-Regular" },
       ios: { fontFamily: "Montserrat" }
-    })
+    }),
+    paddingLeft: 10,
+    paddingRight: 10
   },
   span2: {
     ...Platform.select({
       android: { fontFamily: "Montserrat-Regular" },
       ios: { fontFamily: "Montserrat" }
     }),
-    marginTop: 20,
+    marginTop: 10,
     marginBottom: 10,
-    width: "100%",
-    color: "grey"
+    color: "grey",
+    paddingLeft: 10,
+    paddingRight: 10
   },
   icon: {
-    position: "relative",
-    fontSize: 14,
-    left: 285,
-    top: 55,
-    zIndex: 100,
-    color: "red"
+    paddingRight: 8,
+    fontSize: 18,
+    color: "red",
+    alignSelf: "center"
+  },
+  locationView: {
+    flexDirection: "row",
+    justifyContent: "space-between"
   }
 });
 

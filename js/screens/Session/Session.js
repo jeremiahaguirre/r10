@@ -11,7 +11,6 @@ let iconName;
 iconName = `ios-heart`;
 
 const Session = ({ query, data, navigation }) => {
-  console.log(query);
   return (
     <View>
       {data.favIds.includes(query.Session.id) ? (

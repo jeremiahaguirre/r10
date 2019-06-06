@@ -1,5 +1,5 @@
 import React from "react";
-import { View, SectionList, TouchableHighlight } from "react-native";
+import { View, SectionList, TouchableOpacity } from "react-native";
 import SessionData from "../../components/SessionData";
 import styles from "./styles";
 import { formatSessionData } from "../../helpers";
@@ -15,8 +15,7 @@ const Schedule = ({ sessionData, navigation, data }) => {
           })
         }
         renderItem={({ item, index, section }) => (
-          <TouchableHighlight
-            underlayColor={"grey"}
+          <TouchableOpacity
             onPress={() =>
               navigation.navigate("Session", {
                 sessionLocation: item.location,
@@ -29,7 +28,7 @@ const Schedule = ({ sessionData, navigation, data }) => {
             }
           >
             <SessionData data={data} list={item} />
-          </TouchableHighlight>
+          </TouchableOpacity>
         )}
         sections={formatSessionData(sessionData.allSessions)}
         keyExtractor={(item, index) => item + index}

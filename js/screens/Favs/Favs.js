@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TouchableHighlight, SectionList } from "react-native";
+import { View, TouchableOpacity, SectionList, Text } from "react-native";
 import Fav from "../../components/Fav";
 import { formatSessionData } from "../../helpers";
 import styles from "./styles";
@@ -19,7 +19,7 @@ const Favs = ({ sessionData, navigation, consumerData }) => {
           })
         }
         renderItem={({ item, index, section }) => (
-          <TouchableHighlight
+          <TouchableOpacity
             underlayColor={"grey"}
             onPress={() =>
               navigation.navigate("Session", {
@@ -32,8 +32,14 @@ const Favs = ({ sessionData, navigation, consumerData }) => {
               })
             }
           >
-            <Fav item={item} consumerData={consumerData} />
-          </TouchableHighlight>
+            {filteredData ? (
+              <Fav item={item} consumerData={consumerData} />
+            ) : (
+              <Text style={styles.favsText}>
+                You have no Favs at the moment
+              </Text>
+            )}
+          </TouchableOpacity>
         )}
         sections={formatSessionData(filteredData)}
         keyExtractor={(item, index) => item + index}

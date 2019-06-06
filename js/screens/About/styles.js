@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     margin: "auto",
-    paddingTop: 40,
+    paddingTop: 8,
     paddingLeft: 10,
     paddingRight: 10,
     alignItems: "center",
@@ -40,6 +40,15 @@ const styles = StyleSheet.create({
       ios: { fontFamily: "Montserrat" }
     }),
     paddingTop: 20,
+    paddingBottom: 20
+  },
+  line: {
+    marginTop: 10,
+    marginBottom: 10,
+    borderBottomColor: "grey",
+    borderBottomWidth: 1
+  },
+  footer: {
     paddingBottom: 20
   }
 });

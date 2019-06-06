@@ -5,12 +5,11 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    position: "relative",
-    left: "33%"
+    alignSelf: "center"
   },
   container: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: 8,
     paddingLeft: 10,
     paddingRight: 10,
     backgroundColor: "#000",
@@ -19,12 +18,13 @@ const styles = StyleSheet.create({
   speakerModal: {
     padding: 8,
     backgroundColor: "#FFF",
-    height: "90%",
-    marginLeft: 20,
-    marginRight: 0,
+    height: "85%",
+    marginLeft: 2,
+    marginRight: 2,
     position: "absolute",
-    top: "20%",
-    margin: "auto"
+    top: "15%",
+    alignSelf: "center",
+    borderRadius: 22
   },
   name: {
     textAlign: "center",
@@ -33,20 +33,22 @@ const styles = StyleSheet.create({
     paddingBottom: 8
   },
   header: {
-    backgroundColor: "#000"
+    backgroundColor: "#000",
+    alignSelf: "center"
   },
   goback: {
     fontSize: 20,
-    paddingTop: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
-    color: "#FFF"
+    color: "#FFF",
+    alignSelf: "center"
   },
   aboutSpeaker: {
     color: "#FFF",
     textAlign: "center",
     paddingTop: 10,
     fontSize: 20
+  },
+  bio: {
+    lineHeight: 25
   }
 });
 

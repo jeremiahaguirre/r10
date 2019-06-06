@@ -26,6 +26,8 @@ const About = ({ conductData }) => {
         {conductData.allConducts.map(data => (
           <Conduct key={data.id} list={data} />
         ))}
+        <View style={styles.line} />
+        <Text style={styles.footer}>&copy; RED Academy 2017</Text>
       </ScrollView>
     </View>
   );

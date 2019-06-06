@@ -3,9 +3,7 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 40,
-    paddingLeft: 10,
-    paddingRight: 10,
+    paddingTop: 8,
     backgroundColor: "#FFF"
   },
   line: {
@@ -13,6 +11,10 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderBottomColor: "grey",
     borderBottomWidth: 1
+  },
+  favsText: {
+    top: "30%",
+    textAlign: "center"
   }
 });
 
