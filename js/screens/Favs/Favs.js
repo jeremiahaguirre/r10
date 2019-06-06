@@ -9,41 +9,38 @@ const Favs = ({ sessionData, navigation, consumerData }) => {
   const filteredData = sessionData.allSessions.filter(session =>
     consumerData.favIds.includes(session.id)
   );
-
   return (
     <View style={styles.container}>
-      <SectionList
-        ItemSeparatorComponent={
-          (renderSeparator = () => {
-            return <View style={styles.line} />;
-          })
-        }
-        renderItem={({ item, index, section }) => (
-          <TouchableOpacity
-            underlayColor={"grey"}
-            onPress={() =>
-              navigation.navigate("Session", {
-                sessionLocation: item.location,
-                sessionTitle: item.title,
-                sessionDescription: item.description,
-                sessionTime: item.startTime,
-                speaker: item.speaker,
-                sessionId: item.id
-              })
-            }
-          >
-            {filteredData ? (
+      {consumerData.favIds.length <= 0 ? (
+        <Text style={styles.favsText}>You have no Favs at the moment</Text>
+      ) : (
+        <SectionList
+          ItemSeparatorComponent={
+            (renderSeparator = () => {
+              return <View style={styles.line} />;
+            })
+          }
+          renderItem={({ item, index, section }) => (
+            <TouchableOpacity
+              underlayColor={"grey"}
+              onPress={() =>
+                navigation.navigate("Session", {
+                  sessionLocation: item.location,
+                  sessionTitle: item.title,
+                  sessionDescription: item.description,
+                  sessionTime: item.startTime,
+                  speaker: item.speaker,
+                  sessionId: item.id
+                })
+              }
+            >
               <Fav item={item} consumerData={consumerData} />
-            ) : (
-              <Text style={styles.favsText}>
-                You have no Favs at the moment
-              </Text>
-            )}
-          </TouchableOpacity>
-        )}
-        sections={formatSessionData(filteredData)}
-        keyExtractor={(item, index) => item + index}
-      />
+            </TouchableOpacity>
+          )}
+          sections={formatSessionData(filteredData)}
+          keyExtractor={(item, index) => item + index}
+        />
+      )}
     </View>
   );
 };

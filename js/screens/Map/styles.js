@@ -7,12 +7,6 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     paddingRight: 10,
     backgroundColor: "#FFF"
-  },
-  text: {
-    position: "relative",
-    top: "40%",
-    textAlign: "center",
-    fontSize: 20
   }
 });
 

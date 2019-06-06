@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
   },
   favsText: {
     top: "30%",
-    textAlign: "center"
+    textAlign: "center",
+    fontSize: 20
   }
 });
 
