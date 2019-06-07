@@ -11,7 +11,7 @@ class AboutContainer extends Component {
   };
   render() {
     return (
-      <Query query={GET_CONDUCT_ITEMS}>
+      <Query query={GET_CONDUCT_ITEMS} fetchPolicy={"network-only"}>
         {({ loading, error, data }) => {
           if (loading || !data) return <Loader />;
           return <About conductData={data} />;

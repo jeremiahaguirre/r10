@@ -1,16 +1,6 @@
 import { Platform, StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  time: {
-    padding: 8,
-    backgroundColor: "lightgrey",
-    width: "100%",
-    fontWeight: "bold",
-    ...Platform.select({
-      android: { fontFamily: "Montserrat-Regular" },
-      ios: { fontFamily: "Montserrat" }
-    })
-  },
   span1: {
     marginTop: 10,
     width: "100%",

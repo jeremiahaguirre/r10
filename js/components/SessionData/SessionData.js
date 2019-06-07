@@ -12,9 +12,6 @@ iconName = `ios-heart`;
 const SessionData = ({ data, list }) => {
   return (
     <View>
-      <Text style={styles.time}>
-        {moment(list.startTime).format(" h:mm a")}
-      </Text>
       <Text style={styles.span1}>{list.title}</Text>
       <View style={styles.locationView}>
         <Text style={styles.span2}>{list.location} </Text>

@@ -12,10 +12,6 @@ iconName = `ios-heart`;
 const Fav = ({ item, consumerData }) => {
   return (
     <View>
-      <Text style={styles.time}>
-        {moment(item.startTime).format(" h:mm a")}
-      </Text>
-
       <Text style={styles.span1}>{item.title}</Text>
       <View style={styles.locationView}>
         <Text style={styles.span2}>{item.location}</Text>

@@ -11,7 +11,7 @@ class FavsContainer extends Component {
   };
   render() {
     return (
-      <Query query={GET_SESSION_ITEMS}>
+      <Query query={GET_SESSION_ITEMS} fetchPolicy={"network-only"}>
         {({ loading, error, data }) => {
           if (loading || !data) return <Loader />;
           return (
